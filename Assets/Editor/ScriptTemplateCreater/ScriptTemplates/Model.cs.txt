@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UniRx;
+
+namespace #PROJECTNAME#.Game.#NAME#
+{
+	public interface I#NAME#Model
+    {
+		#NOTRIM#
+    }
+
+
+	public class #NAME#Model : I#NAME#Model
+	{
+		public #NAME#Model()
+		{
+			#NOTRIM#
+		}
+
+	}
+}

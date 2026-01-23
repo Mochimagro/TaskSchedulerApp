@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+
+namespace Mochi.#PROJECTNAME#
+{
+
+    using Presenter;
+
+    public class #NAME#Window : EditorWindow
+    {
+        static EditorWindow _window;
+        static #NAME#Presenter _presenter;
+
+        [MenuItem("EditorWindow/#NAME#Window")]
+        public static void ShowWindow()
+        {
+            _presenter = new #NAME#Presenter();
+            _window = GetWindow<#NAME#Window>();
+        }
+
+        private void CreateGUI()
+        {
+            rootVisualElement.Add(_presenter.VisualElement);
+        }
+
+    }
+}

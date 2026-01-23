@@ -1,0 +1,21 @@
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using Zenject;
+
+namespace #PROJECTNAME#.Data
+{
+    public interface I#NAME#Data
+    {
+		#NOTRIM#
+    }
+
+    [CreateAssetMenu(fileName = "#NAME#Data", menuName = "Installers/#NAME#Data")]
+    public class #NAME#Data :  ScriptableObjectInstaller<#NAME#Data>,I#NAME#Data
+    {
+        public override void InstallBindings()
+        {
+            Container.Bind<I#NAME#Data>().FromInstance(this).AsCached();
+        }
+    }
+}

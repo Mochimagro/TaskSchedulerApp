@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using UniRx;
+using UnityEngine.UI;
+using Zenject;
+
+namespace #PROJECTNAME#.Game.#NAME#
+{
+	
+	public interface I#NAME#View
+    {
+		void Init();
+
+	}
+
+	[RequireComponent(typeof(ZenjectBinding))]
+	public class #NAME#View : MonoBehaviour ,I#NAME#View
+	{
+
+		public void Init()
+		{
+			#NOTRIM#
+		}
+		
+	}
+}

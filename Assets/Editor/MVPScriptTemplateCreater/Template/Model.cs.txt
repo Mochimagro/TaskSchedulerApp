@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Mochi.#PROJECTNAME#.#NAME#
+{
+	public interface I#NAME#Model
+    {
+		#NOTRIM#
+    }
+
+
+	public class #NAME#Model : I#NAME#Model
+	{
+		public #NAME#Model()
+		{
+			#NOTRIM#
+		}
+
+	}
+}

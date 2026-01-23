@@ -1,0 +1,23 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UniRx;
+
+namespace #PROJECTNAME#.Game.Component
+{
+	public interface I#SCRIPTNAME#Component
+    {
+		void Init();
+    }
+
+
+	public class #SCRIPTNAME#Component : MonoBehaviour ,I#SCRIPTNAME#Component
+	{
+		public void Init () 
+		{
+			#NOTRIM#
+		}
+		
+	}
+}

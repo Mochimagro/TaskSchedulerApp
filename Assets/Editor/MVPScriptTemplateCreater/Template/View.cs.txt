@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+using UnityEngine.UIElements;
+
+namespace Mochi.#PROJECTNAME#.#NAME#
+{
+	
+	public interface I#NAME#View
+    {
+        VisualElement VisualElement { get; }
+	}
+
+	public class #NAME#View : VisualElement ,I#NAME#View
+	{
+		VisualElement _visualTree;
+        private VisualTreeAsset _visualTreeAsset;
+		private string _visualTreeAssetFilePath = "#UXMLPATH#";
+
+		#NOTRIM#
+        public VisualElement VisualElement => this;
+		#NOTRIM#
+		public #NAME#View()
+		{
+			_visualTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(_visualTreeAssetFilePath);
+
+			_visualTree = _visualTreeAsset.CloneTree();
+
+			this.Add(_visualTree);
+		}
+		
+	}
+}

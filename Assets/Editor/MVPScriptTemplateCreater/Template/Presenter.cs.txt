@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using UnityEditor;
+
+namespace Mochi.#PROJECTNAME#.Presenter
+{
+	using #NAME#;
+    using UnityEngine.UIElements;
+
+	public interface I#NAME#Presenter
+	{
+		VisualElement VisualElement { get; }
+	}
+
+	public class #NAME#Presenter : I#NAME#Presenter
+	{
+		private static I#NAME#View _#NAMETOLOWER#View = null;
+		private static I#NAME#Model _#NAMETOLOWER#Model = null;
+
+        public VisualElement VisualElement => _#NAMETOLOWER#View.VisualElement;
+
+		public #NAME#Presenter() 
+		{
+            _#NAMETOLOWER#View = new #NAME#View();
+            _#NAMETOLOWER#Model = new #NAME#Model();
+			#NOTRIM#
+			Bind();
+		}
+		
+		private static void Bind () 
+		{
+			#NOTRIM#
+		}
+	}
+}
