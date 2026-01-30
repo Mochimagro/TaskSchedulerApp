@@ -11,6 +11,7 @@ namespace TaskSchedulerApp.Game.Component
     {
 		void Init();
 		string SetText { set; }
+		IObservable<string> OnTextEnter { get; }
     }
 
 
@@ -18,12 +19,20 @@ namespace TaskSchedulerApp.Game.Component
 	{
 		[SerializeField] TMP_InputField _titleText;
 
+		Subject<string> _onTitleTextEnter = new Subject<string>();
+
+
         public string SetText { set => _titleText.text = value; }
+
+        public IObservable<string> OnTextEnter => _onTitleTextEnter;
 
         public void Init () 
 		{
 			_titleText.text = default;
-
+			_titleText.onEndEdit.AddListener(value =>
+			{
+				_onTitleTextEnter.OnNext(value);
+			});
 		}
 		
 	}

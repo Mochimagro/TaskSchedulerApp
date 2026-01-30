@@ -15,6 +15,8 @@ namespace TaskSchedulerApp.Game.TaskDetail
     {
 		void Init();
 		void Init(Data.ITaskData sample);
+        IObservable<string> OnChangeTaskTitle { get; }
+        IObservable<string> OnChangeTaskDetail { get;}
     }
 
 	[RequireComponent(typeof(ZenjectBinding))]
@@ -27,6 +29,12 @@ namespace TaskSchedulerApp.Game.TaskDetail
         [Inject(Id = "IStatusToggleComponent")] IStatusToggleComponent _statusToggleComponent = null;
 
         [Inject(Id = "IPriorityDropdownComponent")] IPriorityDropdownComponent _priorityDropdownComponent = null;
+
+        public IObservable<string> OnChangeTaskDetail => _taskDetailTextComponent.OnEnterText;
+
+        IObservable<string> ITaskDetailView.OnChangeTaskTitle => _taskTitleTextComponent.OnTextEnter;
+
+
 
         public void Init()
 		{
@@ -54,5 +62,6 @@ namespace TaskSchedulerApp.Game.TaskDetail
             _statusToggleComponent.SetValue = sample.IsDone;
             _priorityDropdownComponent.SetPriority = sample.Priority;
         }
+
     }
 }

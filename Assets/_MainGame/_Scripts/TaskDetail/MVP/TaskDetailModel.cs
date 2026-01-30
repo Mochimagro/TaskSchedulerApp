@@ -10,7 +10,8 @@ namespace TaskSchedulerApp.Game.TaskDetail
 	public interface ITaskDetailModel
     {
 		Data.ITaskData GetData { get; }
-
+		string SetTitle { set; }
+		string SetDetail { set; }
     }
 
 
@@ -24,5 +25,8 @@ namespace TaskSchedulerApp.Game.TaskDetail
 		}
 
         public ITaskData GetData => _testData;
+
+        public string SetTitle { set => _testData.TaskTitle = value; }
+        public string SetDetail { set => _testData.TaskDetail = value; }
     }
 }

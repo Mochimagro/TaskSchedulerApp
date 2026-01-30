@@ -31,8 +31,15 @@ namespace TaskSchedulerApp.Game.Presenter
 		
 		private void Bind () 
 		{
-			
+			_taskDetailView.OnChangeTaskTitle.Subscribe(value =>
+			{
+				_taskDetailModel.SetTitle = value;
+			});
 
+			_taskDetailView.OnChangeTaskDetail.Subscribe(value =>
+			{
+				_taskDetailModel.SetDetail = value;
+			});
 		}
 	}
 }
