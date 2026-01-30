@@ -40,6 +40,11 @@ namespace TaskSchedulerApp.Game.Presenter
 			{
 				_taskDetailModel.SetDetail = value;
 			});
+
+			_taskDetailView.OnChangeTaskStatus.Subscribe(value =>
+			{
+				_taskDetailModel.SetStatus = value;
+			});
 		}
 	}
 }

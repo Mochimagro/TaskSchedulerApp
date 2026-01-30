@@ -12,6 +12,7 @@ namespace TaskSchedulerApp.Game.TaskDetail
 		Data.ITaskData GetData { get; }
 		string SetTitle { set; }
 		string SetDetail { set; }
+		bool SetStatus { set; }
     }
 
 
@@ -28,5 +29,6 @@ namespace TaskSchedulerApp.Game.TaskDetail
 
         public string SetTitle { set => _testData.TaskTitle = value; }
         public string SetDetail { set => _testData.TaskDetail = value; }
+        public bool SetStatus { set => _testData.TaskStatus = value; }
     }
 }

@@ -8,7 +8,7 @@ namespace TaskSchedulerApp.Data
     public interface ITaskData
     {
 		public string TaskTitle {  get; set; }
-        public bool IsDone { get; set; }
+        public bool TaskStatus { get; set; }
         public Priority Priority { get; set; }
         public string TaskDetail { get; set; }
 
@@ -23,7 +23,7 @@ namespace TaskSchedulerApp.Data
         [SerializeField][TextArea(minLines:5,maxLines:10)] string _taskDetail = default;
 
         public string TaskTitle { get => _taskTitle; set => _taskTitle = value; }
-        public bool IsDone { get => _isDone; set => _isDone = value; }
+        public bool TaskStatus { get => _isDone; set => _isDone = value; }
         public Priority Priority { get => _priority; set => _priority = value; }
         public string TaskDetail { get => _taskDetail; set => _taskDetail = value; }
 
