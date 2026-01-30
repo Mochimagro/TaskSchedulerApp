@@ -1,6 +1,6 @@
 public enum Priority
 {
     High,
-    Mid = default,
+    Mid,
     Low
 }

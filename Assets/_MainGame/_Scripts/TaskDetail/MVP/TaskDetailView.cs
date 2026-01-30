@@ -30,7 +30,20 @@ namespace TaskSchedulerApp.Game.TaskDetail
 
         public void Init()
 		{
-			
+            _taskDetailTextComponent.Init();
+            _statusToggleComponent.Init();
+            _priorityDropdownComponent.Init();
+            _taskTitleTextComponent.Init();
+
+            _priorityDropdownComponent.OnSelectPriority.Subscribe(value =>
+            {
+                Debug.Log($"dropdown changed : {value}");
+            });
+
+            _statusToggleComponent.OnToggleValueChanged.Subscribe(value =>
+            {
+                Debug.Log($"toggle changed : {value}");
+            });
 
 		}
 

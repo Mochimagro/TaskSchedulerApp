@@ -16,7 +16,7 @@ namespace TaskSchedulerApp.Game.Component
 
 	public class TaskTitleTextComponent : MonoBehaviour ,ITaskTitleTextComponent
 	{
-		[SerializeField] TextMeshProUGUI _titleText;
+		[SerializeField] TMP_InputField _titleText;
 
         public string SetText { set => _titleText.text = value; }
 

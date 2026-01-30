@@ -16,7 +16,7 @@ namespace TaskSchedulerApp.Game.Component
 
 	public class TaskDetailTextComponent : MonoBehaviour ,ITaskDetailTextComponent
 	{
-		[SerializeField] TextMeshProUGUI _taskDetailText = default;
+		[SerializeField] TMP_InputField _taskDetailText = default;
 
         public string SetText { set => _taskDetailText.text = value; }
 

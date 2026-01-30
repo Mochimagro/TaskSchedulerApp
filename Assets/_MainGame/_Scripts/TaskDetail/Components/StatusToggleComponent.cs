@@ -11,7 +11,7 @@ namespace TaskSchedulerApp.Game.Component
     {
 		void Init();
 		bool SetValue { set; }
-		void OnValueChanged(bool value);
+		IObservable<bool> OnToggleValueChanged { get; }
     }
 
 
@@ -19,14 +19,21 @@ namespace TaskSchedulerApp.Game.Component
 	{
 		[SerializeField] Toggle _statusToggle = default;
 
+		Subject<bool> _onToggleValueChanged = new Subject<bool>();
+        public IObservable<bool> OnToggleValueChanged => _onToggleValueChanged;
+
+
         public bool SetValue { set => _statusToggle.interactable = value; }
-		
+
 
         public void Init () 
 		{
 
+			_statusToggle.onValueChanged.AddListener((value) =>
+			{
+				_onToggleValueChanged.OnNext(value);
+			});
         }
 
-		public void OnValueChanged(bool value) => _statusToggle.onValueChanged.AddListener(OnValueChanged);
     }
 }
