@@ -13,6 +13,7 @@ namespace TaskSchedulerApp.Game.TaskDetail
 		string SetTitle { set; }
 		string SetDetail { set; }
 		bool SetStatus { set; }
+		Priority SetPriority { set; }
     }
 
 
@@ -30,5 +31,6 @@ namespace TaskSchedulerApp.Game.TaskDetail
         public string SetTitle { set => _testData.TaskTitle = value; }
         public string SetDetail { set => _testData.TaskDetail = value; }
         public bool SetStatus { set => _testData.TaskStatus = value; }
+        public Priority SetPriority { set => _testData.Priority = value; }
     }
 }

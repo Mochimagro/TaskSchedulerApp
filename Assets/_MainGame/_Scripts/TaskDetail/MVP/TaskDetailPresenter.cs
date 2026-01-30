@@ -45,6 +45,11 @@ namespace TaskSchedulerApp.Game.Presenter
 			{
 				_taskDetailModel.SetStatus = value;
 			});
+
+			_taskDetailView.OnChangeTaskPriority.Subscribe(value =>
+			{
+				_taskDetailModel.SetPriority = value;
+			});
 		}
 	}
 }

@@ -18,6 +18,7 @@ namespace TaskSchedulerApp.Game.TaskDetail
         IObservable<string> OnChangeTaskTitle { get; }
         IObservable<string> OnChangeTaskDetail { get;}
         IObservable<bool> OnChangeTaskStatus { get; }
+        IObservable<Priority> OnChangeTaskPriority { get; }
     }
 
 	[RequireComponent(typeof(ZenjectBinding))]
@@ -34,6 +35,8 @@ namespace TaskSchedulerApp.Game.TaskDetail
         public IObservable<string> OnChangeTaskDetail => _taskDetailTextComponent.OnEnterText;
 
         public IObservable<bool> OnChangeTaskStatus => _statusToggleComponent.OnToggleValueChanged;
+
+        public IObservable<Priority> OnChangeTaskPriority => _priorityDropdownComponent.OnSelectPriority;
 
         IObservable<string> ITaskDetailView.OnChangeTaskTitle => _taskTitleTextComponent.OnTextEnter;
 
