@@ -7,7 +7,7 @@ namespace TaskSchedulerApp.Data
 {
     public interface ITaskListData
     {
-		IReadOnlyCollection<TaskData> Data { get; }
+		IReadOnlyCollection<TaskData> Datas { get; }
 
     }
 
@@ -16,7 +16,7 @@ namespace TaskSchedulerApp.Data
     {
         [SerializeField]List<TaskData> _taskList;
 
-        public IReadOnlyCollection<TaskData> Data => _taskList;
+        public IReadOnlyCollection<TaskData> Datas => _taskList;
 
         public override void InstallBindings()
         {
