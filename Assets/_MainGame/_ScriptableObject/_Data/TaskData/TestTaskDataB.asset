@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a80b34e5743d5e04d8969e99af939b5b, type: 3}
+  m_Name: TestTaskDataB
+  m_EditorClassIdentifier: 
+  _taskTitle: TestB
+  _isDone: 1
+  _priority: 2
+  _taskDetail: 'testDetail
+
+    b
+
+    b
+
+    b
+
+    b
+
+    b
+
+    bb
+
+    b
+
+    b
+
+    bb
+
+    b
+
+    b
+
+    b'

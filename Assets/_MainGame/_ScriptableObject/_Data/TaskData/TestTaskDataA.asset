@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a80b34e5743d5e04d8969e99af939b5b, type: 3}
-  m_Name: TestTaskData
+  m_Name: TestTaskDataA
   m_EditorClassIdentifier: 
-  _taskTitle: Test
+  _taskTitle: TestA
   _isDone: 1
   _priority: 0
   _taskDetail: 'testDetail

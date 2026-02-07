@@ -146,6 +146,8 @@ GameObject:
   - component: {fileID: 5375068669846095988}
   - component: {fileID: 7321838650987718091}
   - component: {fileID: 6658783904128606975}
+  - component: {fileID: 8033409137348513079}
+  - component: {fileID: 2037739239811711084}
   m_Layer: 5
   m_Name: Button - TaskListItem
   m_TagString: Untagged
@@ -255,3 +257,35 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8033409137348513079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8572312824209291277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefa1d3c3df184f4dab3f3bc5e30cf93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 6658783904128606975}
+  _taskTitle: {fileID: 8307368518549973985}
+--- !u!114 &2037739239811711084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8572312824209291277}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 8033409137348513079}
+  _identifier: ITaskListViewItemComponent
+  _useSceneContext: 0
+  _context: {fileID: 0}
+  _bindType: 0
