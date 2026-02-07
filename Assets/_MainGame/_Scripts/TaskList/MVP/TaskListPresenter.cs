@@ -30,7 +30,10 @@ namespace TaskSchedulerApp.Game.Presenter
 		private void Bind () 
 		{
 			_taskListView.CreateTaskItems(_taskListModel.GetTaskList);
-
+			_taskListView.OnSelectTask.Subscribe(id =>
+			{
+				Debug.Log($"select id : {id}");
+			});
 		}
 	}
 }

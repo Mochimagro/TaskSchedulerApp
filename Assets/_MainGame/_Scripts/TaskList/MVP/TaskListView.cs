@@ -25,6 +25,7 @@ namespace TaskSchedulerApp.Game.TaskList
     {
 		void Init();
 		void CreateTaskItems(IReadOnlyList<TaskNameItem> items);
+		IObservable<int> OnSelectTask { get; }
 	}
 
 	[RequireComponent(typeof(ZenjectBinding))]
@@ -33,7 +34,9 @@ namespace TaskSchedulerApp.Game.TaskList
 		[SerializeField] TaskListViewItemComponent _listItem;
 		List<TaskListViewItemComponent> _listViewItems = new List<TaskListViewItemComponent>();
 		[SerializeField]Transform _parentListContext;
+		Subject<int>_onSelectTask = new Subject<int>();
 
+		public IObservable<int> OnSelectTask => _onSelectTask;
 
         public void CreateTaskItems(IReadOnlyList<TaskNameItem> items)
         {
@@ -41,6 +44,10 @@ namespace TaskSchedulerApp.Game.TaskList
 			{
 				var listViewitem = GameObject.Instantiate(_listItem,_parentListContext);
 				listViewitem.Init(item.id, item.title);
+				listViewitem.OnClickButton.Subscribe(id =>
+				{
+					_onSelectTask.OnNext(id);
+				});
 				listViewitem.gameObject.SetActive(true);
 				_listViewItems.Add(listViewitem);
 			}

@@ -15,6 +15,7 @@ namespace TaskSchedulerApp.Game.Component
 
         int SetID {  set; }
 		string SetTaskTitle { set; }
+		IObservable<int> OnClickButton { get; }
     }
 
 
@@ -28,17 +29,22 @@ namespace TaskSchedulerApp.Game.Component
         public int SetID { set => _taskID = value; }
         public string SetTaskTitle { set => _taskTitle.text = value; }
 
-		public void Init()
+		Subject<int> _onClickButton = new Subject<int>();
+        public IObservable<int> OnClickButton => _onClickButton;
+
+        public void Init()
 		{
-			SetID = 0;
-			SetTaskTitle = string.Empty;
+			Init(0, string.Empty);
 		}
 
         public void Init (int id,string taskTitle) 
 		{
 			SetID = id;
 			SetTaskTitle = taskTitle;
-
+			_button.OnClickAsObservable().Subscribe(_ =>
+			{
+                _onClickButton.OnNext(_taskID);
+            });
 		}
 		
 	}
