@@ -14,7 +14,7 @@ namespace TaskSchedulerApp.Game.TaskDetail
 	public interface ITaskDetailView
     {
 		void Init();
-		void Init(Data.ITaskData sample);
+		void ShowDataDetail(ITaskData data);
         IObservable<string> OnChangeTaskTitle { get; }
         IObservable<string> OnChangeTaskDetail { get;}
         IObservable<bool> OnChangeTaskStatus { get; }
@@ -56,12 +56,12 @@ namespace TaskSchedulerApp.Game.TaskDetail
 
 		}
 
-        public void Init(ITaskData sample)
+        public void ShowDataDetail(ITaskData data)
         {
-            _taskTitleTextComponent.SetText = sample.TaskTitle;
-            _taskDetailTextComponent.SetText = sample.TaskDetail;
-            _statusToggleComponent.SetValue = sample.TaskStatus;
-            _priorityDropdownComponent.SetPriority = sample.Priority;
+            _taskTitleTextComponent.SetText = data.TaskTitle;
+            _taskDetailTextComponent.SetText = data.TaskDetail;
+            _statusToggleComponent.SetValue = data.TaskStatus;
+            _priorityDropdownComponent.SetPriority = data.Priority;
         }
 
     }

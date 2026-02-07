@@ -9,7 +9,11 @@ namespace TaskSchedulerApp.Game.TaskDetail
 {
 	public interface ITaskDetailModel
     {
+		IObservable<Data.ITaskData> OnChangeSelectedData { get; }
+
 		Data.ITaskData GetData { get; }
+		ITaskData SetData { set; }
+
 		string SetTitle { set; }
 		string SetDetail { set; }
 		bool SetStatus { set; }
@@ -19,18 +23,21 @@ namespace TaskSchedulerApp.Game.TaskDetail
 
 	public class TaskDetailModel : ITaskDetailModel
 	{
-		Data.ITaskData _testData = null;
-		public TaskDetailModel(Data.ITaskData data)
-		{
-			_testData = data;
+		ReactiveProperty<ITaskData> _selectData = new ReactiveProperty<ITaskData>();
 
+		public TaskDetailModel()
+		{
 		}
 
-        public ITaskData GetData => _testData;
+        public ITaskData GetData => _selectData.Value;
 
-        public string SetTitle { set => _testData.TaskTitle = value; }
-        public string SetDetail { set => _testData.TaskDetail = value; }
-        public bool SetStatus { set => _testData.TaskStatus = value; }
-        public Priority SetPriority { set => _testData.Priority = value; }
+        public string SetTitle { set => _selectData.Value.TaskTitle = value; }
+        public string SetDetail { set => _selectData.Value.TaskDetail = value; }
+        public bool SetStatus { set => _selectData.Value.TaskStatus = value; }
+        public Priority SetPriority { set => _selectData.Value.Priority = value; }
+
+		public IObservable<ITaskData> OnChangeSelectedData => _selectData;
+
+        public ITaskData SetData { set => _selectData.Value = value; }
     }
 }

@@ -16,21 +16,34 @@ namespace TaskSchedulerApp.Game.Presenter
 	{
 		private ITaskDetailView _taskDetailView = null;
 		private ITaskDetailModel _taskDetailModel = null;
+		private ITaskListPresenter _taskListPresenter = null;
 
-		public TaskDetailPresenter(ITaskDetailView view,ITaskDetailModel model) 
+		public TaskDetailPresenter(ITaskDetailView view,ITaskDetailModel model,ITaskListPresenter taskList) 
 		{
 			_taskDetailView = view ?? throw new ArgumentNullException(nameof(view));
 			_taskDetailModel = model ?? throw new ArgumentNullException(nameof(model));
+			_taskListPresenter = taskList ?? throw new ArgumentNullException(nameof(taskList));
 			
 
 			_taskDetailView.Init();
-			_taskDetailView.Init(_taskDetailModel.GetData);
 
 			Bind();
 		}
 		
 		private void Bind () 
 		{
+			_taskListPresenter.OnSelectTaskData.Subscribe(data =>
+			{
+				_taskDetailModel.SetData = data;
+			});
+
+			_taskDetailModel.OnChangeSelectedData.Subscribe(data =>
+			{
+				if(data == null) { return; }
+				_taskDetailView.ShowDataDetail(data);
+			});
+
+
 			_taskDetailView.OnChangeTaskTitle.Subscribe(value =>
 			{
 				_taskDetailModel.SetTitle = value;

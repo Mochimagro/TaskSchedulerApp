@@ -28,7 +28,7 @@ namespace TaskSchedulerApp.Game.Presenter
 			Bind();
 		}
 
-        public IObservable<ITaskData> OnSelectTaskData => throw new NotImplementedException();
+        public IObservable<ITaskData> OnSelectTaskData =>_onSelectTask;
 		Subject<ITaskData> _onSelectTask = new Subject<ITaskData>();
         private void Bind () 
 		{
