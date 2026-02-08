@@ -23,21 +23,29 @@ namespace TaskSchedulerApp.Game.TaskDetail
 
 	public class TaskDetailModel : ITaskDetailModel
 	{
-		ReactiveProperty<ITaskData> _selectData = new ReactiveProperty<ITaskData>();
+		ITaskData _selectData;
 
-		public TaskDetailModel()
+		Subject<Data.ITaskData> _onChangeSelectData = new Subject<Data.ITaskData>();
+
+		public IObservable<ITaskData> OnChangeSelectedData => _onChangeSelectData;
+
+		public TaskDetailModel(Data.ITaskListData taskListData)
 		{
+			taskListData.OnChangeSelectedData.Subscribe(selected =>
+			{
+				_selectData = selected;
+				_onChangeSelectData.OnNext(_selectData);
+			});
 		}
 
-        public ITaskData GetData => _selectData.Value;
+        public ITaskData GetData => _selectData;
 
-        public string SetTitle { set => _selectData.Value.TaskTitle = value; }
-        public string SetDetail { set => _selectData.Value.TaskDetail = value; }
-        public bool SetStatus { set => _selectData.Value.TaskStatus = value; }
-        public Priority SetPriority { set => _selectData.Value.Priority = value; }
+        public string SetTitle { set => _selectData.TaskTitle = value; }
+        public string SetDetail { set => _selectData.TaskDetail = value; }
+        public bool SetStatus { set => _selectData.TaskStatus = value; }
+        public Priority SetPriority { set => _selectData.Priority = value; }
 
-		public IObservable<ITaskData> OnChangeSelectedData => _selectData;
 
-        public ITaskData SetData { set => _selectData.Value = value; }
+        public ITaskData SetData { set => _selectData = value; }
     }
 }

@@ -10,7 +10,6 @@ namespace TaskSchedulerApp.Game.Presenter
 
     public interface ITaskListPresenter
 	{
-		IObservable<ITaskData> OnSelectTaskData {  get; }	
 	}
 
 	public class TaskListPresenter : ITaskListPresenter
@@ -28,18 +27,12 @@ namespace TaskSchedulerApp.Game.Presenter
 			Bind();
 		}
 
-        public IObservable<ITaskData> OnSelectTaskData =>_onSelectTask;
-		Subject<ITaskData> _onSelectTask = new Subject<ITaskData>();
         private void Bind () 
 		{
 			_taskListView.CreateTaskItems(_taskListModel.GetTaskList);
 			_taskListView.OnSelectTask.Subscribe(id =>
 			{
-				var select = _taskListModel.GetTaskData(id);
-				_onSelectTask.OnNext(select);
-				// 疎結合にするなら、Modelに「SelectData」を変更して、
-				// TaskDetailModelに「SelectData」が変更されたことを感知させて
-				// その内容を表示するのが正しいけど、今回は実装速度優先にする
+				_taskListModel.SetSelectTask(id);
 			});
 		}
 	}

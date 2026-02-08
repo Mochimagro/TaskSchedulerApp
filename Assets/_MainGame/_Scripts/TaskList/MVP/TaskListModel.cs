@@ -10,7 +10,7 @@ namespace TaskSchedulerApp.Game.TaskList
 	public interface ITaskListModel
     {
 		List<TaskNameItem> GetTaskList { get; }
-		ITaskData GetTaskData(int id);
+		void SetSelectTask(int id);
     }
 
 
@@ -24,11 +24,8 @@ namespace TaskSchedulerApp.Game.TaskList
 
 		}
 
-		public List<TaskNameItem> GetTaskList => _taskListData.Datas.Select((data) => new TaskNameItem(data.TaskTitle, data.ID)).ToList();
+		public List<TaskNameItem> GetTaskList => _taskListData.TaskList.Select((data) => new TaskNameItem(data.TaskTitle, data.ID)).ToList();
 
-        public ITaskData GetTaskData(int id)
-        {
-			return _taskListData.Datas.First(x => x.ID == id);
-        }
+        public void SetSelectTask(int id) => _taskListData.SelectData(id);
     }
 }
