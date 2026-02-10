@@ -34,6 +34,11 @@ namespace TaskSchedulerApp.Game.Presenter
 			{
 				_taskListModel.SetSelectTask(id);
 			});
+
+			_taskListModel.OnChangedTaskListData.Subscribe(_ =>
+			{
+				_taskListView.RefreshTaskItems(_taskListModel.GetTaskList);
+			});
 		}
 	}
 }

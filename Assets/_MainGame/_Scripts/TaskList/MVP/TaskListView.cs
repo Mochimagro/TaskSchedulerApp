@@ -25,7 +25,9 @@ namespace TaskSchedulerApp.Game.TaskList
     {
 		void Init();
 		void CreateTaskItems(IReadOnlyList<TaskNameItem> items);
-		IObservable<int> OnSelectTask { get; }
+		void RefreshTaskItems(IReadOnlyList<TaskNameItem> items);
+
+        IObservable<int> OnSelectTask { get; }
 	}
 
 	[RequireComponent(typeof(ZenjectBinding))]
@@ -52,6 +54,18 @@ namespace TaskSchedulerApp.Game.TaskList
 				_listViewItems.Add(listViewitem);
 			}
         }
+
+		public void RefreshTaskItems(IReadOnlyList<TaskNameItem> items)
+		{
+			foreach(var uiItem in _listViewItems)
+			{
+				Destroy(uiItem.gameObject);
+			}
+
+			_listViewItems.Clear();
+
+			CreateTaskItems(items);
+		}
 
         public void Init()
 		{

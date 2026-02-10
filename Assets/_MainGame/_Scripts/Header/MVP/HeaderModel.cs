@@ -8,18 +8,25 @@ namespace TaskSchedulerApp.Game.Header
 {
 	public interface IHeaderModel
     {
-		
+		void CreateNewTask();
 
     }
 
 
 	public class HeaderModel : IHeaderModel
 	{
-		public HeaderModel()
+
+		Data.ITaskListData _taskListData;
+
+		public HeaderModel(Data.ITaskListData taskListData)
 		{
-			
+			_taskListData = taskListData;
 
 		}
 
-	}
+        public void CreateNewTask()
+        {
+			_taskListData.CreateNewData();
+        }
+    }
 }

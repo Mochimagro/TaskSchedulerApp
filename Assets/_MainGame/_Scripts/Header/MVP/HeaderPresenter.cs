@@ -32,7 +32,7 @@ namespace TaskSchedulerApp.Game.Presenter
 			_headerView.OnClickAddTask.Subscribe(_ =>
 			{
 				// Modelでタスクを追加する処理
-				Debug.Log("Click Add Button");
+				_headerModel.CreateNewTask();
 			});
 
 		}
