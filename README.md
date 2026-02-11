@@ -20,3 +20,7 @@ C#の専門性と、保守性の高いソフトウェア設計を実証するた
 - **UniRx:** 非同期処理およびイベント駆動の実装
 - **Zenject:** DI。外部代入機能による疎結合実現
 - **MVP Pattern:** 責務分離の徹底
+
+## 🏗 依存性解消エピソード
+
+<img width="10580" height="14023" alt="TaskSchedulerデザイン概要 (1)" src="https://github.com/user-attachments/assets/f8087b57-f1b4-4abd-8a3a-6874004d06a0" />
